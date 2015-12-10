@@ -33,9 +33,9 @@
     
     // Prepare the container view
     _containerView = [[UIView alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    _containerView.backgroundColor = [UIColor blackColor];
+    _containerView.backgroundColor = [UIColor whiteColor];
     _containerView.alpha=0;
-
+    
     // Capture Session
     _captureSession = [[AVCaptureSession alloc] init];
     [_captureSession setSessionPreset:AVCaptureSessionPreset640x480];
@@ -53,22 +53,23 @@
     [_stillImageOutput setOutputSettings:outputSettings];
     [_captureSession addOutput:_stillImageOutput];
     
-
+    
     // Square preview layer
     _previewView = [[UIView alloc] initWithFrame:CGRectZero];
     _previewView.backgroundColor = [UIColor blackColor];
     CGRect rectangle = [[UIScreen mainScreen] bounds];
-    CGRect previewFrame = CGRectMake(0, 60.0f, rectangle.size.width, rectangle.size.width);
+    CGRect previewFrame = CGRectMake(0, 80.0f, rectangle.size.width, rectangle.size.width);
     _previewView.frame = previewFrame;
     _previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_captureSession];
     _previewLayer.frame = _previewView.bounds;
     _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [_previewView.layer addSublayer:_previewLayer];
     [_containerView addSubview:_previewView];
-
+    
     // Add the take picture button and gesture recog
-    UIButton* capture = [[UIButton alloc]initWithFrame:CGRectMake(rectangle.size.width/2 - 40, rectangle.size.width+70, 80, 40)];
-    [capture setImage:[UIImage imageNamed:@"icon-camera.png"] forState:UIControlStateNormal];
+    UIButton* capture = [[UIButton alloc]initWithFrame:CGRectMake(rectangle.size.width/2 - 40, rectangle.size.width+70, 80, 50)];
+    [capture setImage:[UIImage imageNamed:@"CDVSquareCamera-take.png"] forState:UIControlStateNormal];
+    [capture setImage:[UIImage imageNamed:@"CDVSquareCamera-take-touched.png"] forState:UIControlStateHighlighted];
     
 #if TARGET_IPHONE_SIMULATOR
     
@@ -80,14 +81,15 @@
     singleTap.numberOfTapsRequired = 1;
 #endif
     
-
+    
     capture.userInteractionEnabled = YES;
     [capture addGestureRecognizer:singleTap];
     [_containerView addSubview:capture];
     
     // Add the quit button
-    UIButton* quit = [[UIButton alloc]initWithFrame:CGRectMake(10, [[UIScreen mainScreen] bounds].size.height-30-10, 30, 30)];
-    [quit setImage:[UIImage imageNamed:@"icon-close.png"] forState:UIControlStateNormal];
+    UIButton* quit = [[UIButton alloc]initWithFrame:CGRectMake(7, 20, 46, 46)];
+    [quit setImage:[UIImage imageNamed:@"CDVSquareCamera-close.png"] forState:UIControlStateNormal];
+    [quit setImage:[UIImage imageNamed:@"CDVSquareCamera-close-touched.png"] forState:UIControlStateHighlighted];
     UITapGestureRecognizer *singleTapQuit = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancel)];
     singleTapQuit.numberOfTapsRequired = 1;
     quit.userInteractionEnabled = YES;
@@ -133,7 +135,7 @@
          
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
          UIImage* image = [[UIImage alloc] initWithData:imageData];
-
+         
          
          CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake((image.size.height-image.size.width)/2,0,image.size.width, image.size.width));
          
@@ -149,11 +151,11 @@
          
          int i = 1;
          do {
-             filePath = [NSString stringWithFormat:@"%@/fmfleger-tmp-%i.png", [NSTemporaryDirectory()stringByStandardizingPath], i];
+             filePath = [NSString stringWithFormat:@"%@/cdvSquareCamera-tmp-%i.png", [NSTemporaryDirectory()stringByStandardizingPath], i];
              i++;
          } while ([fileMgr fileExistsAtPath:filePath]);
          
-
+         
          UIImage* rotatedImage = [self rotateImage:finalImage onDegrees:90.0f];
          UIImage* mirroredImage = [self mirrorImage:rotatedImage];
          
@@ -181,7 +183,7 @@
              [_containerView removeFromSuperview];
              [self.webView setUserInteractionEnabled:YES];
          }];
-
+         
      }];
     
     
@@ -224,7 +226,7 @@
         [_containerView removeFromSuperview];
         [self.webView setUserInteractionEnabled:YES];
     }];
-
+    
 }
 
 
@@ -267,7 +269,7 @@
         [_containerView removeFromSuperview];
         [self.webView setUserInteractionEnabled:YES];
     }];
-
+    
 }
 
 @end
