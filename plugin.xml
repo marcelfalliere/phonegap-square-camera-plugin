@@ -21,7 +21,7 @@ under the License.
 
 <plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
         id="com.fmf.marcelfalliere.squarecamera"
-        version="0.1">
+        version="0.2">
     <name>SquareCamera</name>
     <description>This plugin provides a square camera view for your Cordova/Phonegap application that looks like this :</description>
     <author email="frederic.falliere@gmail.com">Marcelfalliere</author>
@@ -63,7 +63,9 @@ under the License.
         <header-file src="src/ios/CDVSquareCamera.h"/>
         <source-file src="src/ios/CDVSquareCamera.m"/>
 
-        
+        <framework src="CoreMedia.framework"/>
+        <framework src="CoreVideo.framework"/>
+        <framework src="ImageIO.framework"/>
     </platform>
 
 
