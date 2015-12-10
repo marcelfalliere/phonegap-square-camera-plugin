@@ -35,9 +35,9 @@ SquareCamera = (function() {
     
   };
 
-  SquareCamera.show(function(){
+  SquareCamera.show = function(){
     alert('hey');
-  })
+  }
 
   return SquareCamera;
 
