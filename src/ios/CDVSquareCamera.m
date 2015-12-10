@@ -195,7 +195,7 @@
 }
 
 -(void)takePictureSimulator {
-    UIImage* ti = [UIImage imageNamed:@"simulatorpicture"];
+    UIImage* ti = [UIImage imageNamed:@"CDVSquareCameraDefaultPicture"];
     UIImageView* i = [[UIImageView alloc]initWithImage:ti];
     i.contentMode = UIViewContentModeScaleAspectFit;
     i.frame = _previewView.frame;

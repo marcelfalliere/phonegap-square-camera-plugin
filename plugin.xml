@@ -66,6 +66,8 @@ under the License.
         <framework src="CoreMedia.framework"/>
         <framework src="CoreVideo.framework"/>
         <framework src="ImageIO.framework"/>
+
+        <resource-file src="CDVSquareCameraDefaultPicture.jpg" />
     </platform>
 
 
