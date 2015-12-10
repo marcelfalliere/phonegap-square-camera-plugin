@@ -35,8 +35,8 @@ SquareCamera = (function() {
     
   };
 
-  SquareCamera.show = function(){
-    exec(null, null, 'SquareCamera', 'show');
+  SquareCamera.show = function(success, error){
+    exec(success, error, 'SquareCamera', 'show');
   }
 
   return SquareCamera;
