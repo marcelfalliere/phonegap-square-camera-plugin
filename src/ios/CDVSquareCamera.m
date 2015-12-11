@@ -58,7 +58,7 @@
     _previewView = [[UIView alloc] initWithFrame:CGRectZero];
     _previewView.backgroundColor = [UIColor blackColor];
     CGRect rectangle = [[UIScreen mainScreen] bounds];
-    CGRect previewFrame = CGRectMake(0, 80.0f, rectangle.size.width, rectangle.size.width);
+    CGRect previewFrame = CGRectMake(0, 64.0f, rectangle.size.width, rectangle.size.width);
     _previewView.frame = previewFrame;
     _previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_captureSession];
     _previewLayer.frame = _previewView.bounds;
@@ -67,7 +67,7 @@
     [_containerView addSubview:_previewView];
     
     // Add the take picture button and gesture recog
-    UIButton* capture = [[UIButton alloc]initWithFrame:CGRectMake(rectangle.size.width/2 - 40, rectangle.size.width+70, 80, 50)];
+    UIButton* capture = [[UIButton alloc]initWithFrame:CGRectMake(rectangle.size.width/2 - 40, rectangle.size.width+80, 100, 62.5)];
     [capture setImage:[UIImage imageNamed:@"CDVSquareCamera-take.png"] forState:UIControlStateNormal];
     [capture setImage:[UIImage imageNamed:@"CDVSquareCamera-take-touched.png"] forState:UIControlStateHighlighted];
     
@@ -87,7 +87,7 @@
     [_containerView addSubview:capture];
     
     // Add the quit button
-    UIButton* quit = [[UIButton alloc]initWithFrame:CGRectMake(7, 20, 46, 46)];
+    UIButton* quit = [[UIButton alloc]initWithFrame:CGRectMake(6, 22, 44, 44)];
     [quit setImage:[UIImage imageNamed:@"CDVSquareCamera-close.png"] forState:UIControlStateNormal];
     [quit setImage:[UIImage imageNamed:@"CDVSquareCamera-close-touched.png"] forState:UIControlStateHighlighted];
     UITapGestureRecognizer *singleTapQuit = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancel)];
