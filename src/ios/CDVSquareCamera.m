@@ -33,7 +33,7 @@
     
     // Prepare the container view
     _containerView = [[UIView alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    _containerView.backgroundColor = [UIColor whiteColor];
+    _containerView.backgroundColor = [UIColor blackColor];
     _containerView.alpha=0;
     
     // Capture Session
