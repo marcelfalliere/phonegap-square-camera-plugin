@@ -68,6 +68,10 @@ under the License.
         <framework src="ImageIO.framework"/>
 
         <resource-file src="CDVSquareCameraDefaultPicture.jpg" />
+        <resource-file src="CDVSquareCamera-close-touched.png" />
+        <resource-file src="CDVSquareCamera-close.png" />
+        <resource-file src="CDVSquareCamera-take-touched.png" />
+        <resource-file src="CDVSquareCamera-take.png" />        
     </platform>
 
 
